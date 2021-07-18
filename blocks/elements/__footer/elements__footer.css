@@ -1,0 +1,10 @@
+.elements__footer {
+    height: 79px;
+    max-width: 282px;
+    background-color: #fff;
+    border-radius: 0 0 10px 10px;
+    color: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

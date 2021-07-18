@@ -1,0 +1,6 @@
+.popup__cover {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(27px * 2 + 30px * 2);
+    margin-bottom: 13px;
+}
