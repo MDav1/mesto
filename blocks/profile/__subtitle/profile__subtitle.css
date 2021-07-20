@@ -2,6 +2,8 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
+    height: 39px;
+    margin-top: 16px;
 }
 
 @media all and (max-width: 768px) {
@@ -9,5 +11,7 @@
         font-size: 14px;
         line-height: 17px;
         text-align: center;
+        height: 14px;
+        margin: 14px auto 36px auto;
     }
 }

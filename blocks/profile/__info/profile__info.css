@@ -9,6 +9,6 @@
 @media all and (max-width: 768px) {
     .profile__info {
         align-items: center;
-        margin: 22px auto 36px auto;
+        margin: 0 auto;
     }
 }
