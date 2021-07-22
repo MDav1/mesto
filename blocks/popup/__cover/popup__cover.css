@@ -3,4 +3,5 @@
     flex-direction: column;
     min-height: calc(27px * 2 + 30px * 2);
     border: none;
+    padding: 0;
 }
