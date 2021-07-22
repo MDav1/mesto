@@ -3,9 +3,9 @@ let closePopupEdit = document.querySelector(".popup__close");
 let userName = document.querySelector(".profile__title");
 let userAbout = document.querySelector(".profile__subtitle");
 let userFormName = document.getElementById("user-name");
-const userFormAbout = document.getElementById("user-about");
+let userFormAbout = document.getElementById("user-about");
 let editUserButton = document.querySelector(".profile__edit-button");
-let popupEdit = document.querySelector(".popup-edit");
+let popup = document.querySelector(".popup");
 let userEditForm = document.querySelector(".popup__container");
 
 
@@ -21,14 +21,14 @@ function closePopup(popupType) {
 
 //Close Edit Popup when click on Close icon
 closePopupEdit.addEventListener("click", function () {
-    closePopup(popupEdit);
+    closePopup(popup);
 });
 
 //Open Edit popup
 function openPopupFillForm() {
-    userFormName.setAttribute("value", userName.textContent);
-    userFormAbout.setAttribute("value", userAbout.textContent);
-    openPopup(popupEdit);
+    userFormName.value = userName.textContent;
+    userFormAbout.value = userAbout.textContent;
+    openPopup(popup);
 }
 
 editUserButton.addEventListener("click", function () {
@@ -40,7 +40,7 @@ function popupEditInfo(evt) {
     evt.preventDefault();
     userName.textContent = userFormName.value;
     userAbout.textContent = userFormAbout.value;
-    closePopup(popupEdit);
+    closePopup(popup);
 }
   
 //Click Save on Edit popup

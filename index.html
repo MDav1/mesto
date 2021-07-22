@@ -14,56 +14,56 @@
 
         <main>
             <section class="profile">
-                <img src="./images/profile-image.jpg" alt="Аватар" class="profile__avatar cursor link">
+                <img src="./images/profile-image.jpg" alt="Аватар" class="profile__avatar link">
                 <div class="profile__info">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
-                    <button type="button" class="profile__edit-button cursor link"></button>
-                    <h2 class="profile__subtitle">Исследователь океана</h2>
+                    <button type="button" class="profile__edit-button link"></button>
+                    <p class="profile__subtitle">Исследователь океана</p>
                 </div>
-                <button type="button" class="profile__add-button cursor link"></button>
+                <button type="button" class="profile__add-button link"></button>
             </section>
 
             <section class="elements">
-                <div>
-                    <img class="elements__element" src="./images/building.jpg" alt="Карачевск">
+                <div class= "elements__element">
+                    <img src="./images/building.jpg" alt="Карачевск">
                     <div class="elements__footer">
                         <h2 class="elements__footer-title">Карачевск</h2>
-                        <button type="button" class="elements__like-button cursor link"></button>
+                        <button type="button" class="elements__like-button"></button>
                     </div>
                 </div>
-                <div>
-                    <img class="elements__element" src="./images/sunset.jpg" alt="Гора Эльбрус">
+                <div class= "elements__element">
+                    <img src="./images/sunset.jpg" alt="Гора Эльбрус">
                     <div class="elements__footer">
                         <h2 class="elements__footer-title">Гора Эльбрус</h2>
-                        <button type="button" class="elements__like-button cursor link"></button>
+                        <button type="button" class="elements__like-button"></button>
                     </div>
                 </div>
-                <div>
-                    <img class="elements__element" src="./images/mountain.jpg" alt="Домбай">
+                <div class= "elements__element">
+                    <img src="./images/mountain.jpg" alt="Домбай">
                     <div class="elements__footer">
                         <h2 class="elements__footer-title">Домбай</h2>
-                        <button type="button" class="elements__like-button cursor link"></button>
+                        <button type="button" class="elements__like-button"></button>
                     </div>
                 </div>
-                <div>
-                    <img class="elements__element" src="./images/sunset.jpg" alt="Гора Эльбрус">
+                <div class= "elements__element">
+                    <img src="./images/sunset.jpg" alt="Гора Эльбрус">
                     <div class="elements__footer">
                         <h2 class="elements__footer-title">Гора Эльбрус</h2>
-                        <button type="button" class="elements__like-button cursor link"></button>
+                        <button type="button" class="elements__like-button"></button>
                     </div>
                 </div>
-                <div>
-                    <img class="elements__element" src="./images/mountain.jpg" alt="Домбай">
+                <div class= "elements__element">
+                    <img src="./images/mountain.jpg" alt="Домбай">
                     <div class="elements__footer">
                         <h2 class="elements__footer-title">Домбай</h2>
-                        <button type="button" class="elements__like-button cursor link"></button>
+                        <button type="button" class="elements__like-button"></button>
                     </div>
                 </div>
-                <div>
-                    <img class="elements__element" src="./images/building.jpg" alt="Карачаево-Черкессия">
+                <div class= "elements__element">
+                    <img src="./images/building.jpg" alt="Карачаево-Черкессия">
                     <div class="elements__footer">
                         <h2 class="elements__footer-title">Карачаево-Черкессия</h2>
-                        <button type="button" class="elements__like-button cursor link"></button>
+                        <button type="button" class="elements__like-button"></button>
                     </div>
                 </div>
             </section>
@@ -73,22 +73,18 @@
             <p>&copy; 2020 Mesto Russia</p>
         </footer>
 
-        <div class="popup popup-edit">
-            <form class="popup__container">
-                <button type="button" class="popup__close cursor link"></button>
+        <div class="popup">
+            <form class="popup__container" method="post" name="container">
+                <button type="button" class="popup__close link"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                    <div class="popup__cover">
-                        <label class="popup__control">
-                            <input class="popup__input " type="text" name="name" id="user-name">
-                        </label>
-                        <label class="popup__control">
-                            <input class="popup__input" type="text" name="about" id="user-about">
-                        </label>
-                    </div>
-                <button class="popup__submit cursor" type="submit" name="submit">Сохранить</button>
+                <fieldset class="popup__cover">
+                        <input class="popup__input " type="text" name="name" id="user-name">
+                        <input class="popup__input" type="text" name="about" id="user-about">
+                </fieldset>
+                <button class="popup__submit" type="submit" name="submit">Сохранить</button>
                 </form>
         </div>
 
-        <script src="./pages/script.js"></script>
+        <script src="./scripts/script.js"></script>
     </body>
 </html>

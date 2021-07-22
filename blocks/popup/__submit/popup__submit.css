@@ -16,6 +16,7 @@
 .popup__submit:hover {
     background-color: rgba(0, 0, 0, 0.8);
     transition:0.5s linear;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 550px){

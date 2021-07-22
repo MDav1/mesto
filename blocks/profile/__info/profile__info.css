@@ -3,6 +3,7 @@
     margin: 0;
     grid-template-columns: max-content 1fr;
     grid-column-gap: 18px;
+    grid-row-gap: 16px;
     align-items: center;
 }
 
@@ -10,5 +11,8 @@
     .profile__info {
         align-items: center;
         margin: 0 auto;
+        grid-row-gap: 14px;
+        grid-column-gap: 10px;
+        margin-top: 23px;
     }
 }
