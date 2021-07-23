@@ -9,7 +9,6 @@
 
 @media all and (max-width: 768px) {
     .profile__info {
-        align-items: center;
         margin: 0 auto;
         grid-row-gap: 14px;
         grid-column-gap: 10px;
