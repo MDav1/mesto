@@ -1,5 +1,8 @@
 .elements__element {
-    max-width: 282px;
-    border-radius: 10px 10px 0 0;
+    width: 100%;
+    border-radius: 10px;
     overflow: hidden;
+    list-style: none;
+    position: relative;
+    cursor: pointer;
 }

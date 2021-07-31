@@ -24,58 +24,30 @@
             </section>
 
             <section class="elements">
-                <div class= "elements__element">
-                    <img src="./images/building.jpg" alt="Карачевск">
-                    <div class="elements__footer">
-                        <h2 class="elements__footer-title">Карачевск</h2>
-                        <button type="button" class="elements__like-button"></button>
-                    </div>
-                </div>
-                <div class= "elements__element">
-                    <img src="./images/sunset.jpg" alt="Гора Эльбрус">
-                    <div class="elements__footer">
-                        <h2 class="elements__footer-title">Гора Эльбрус</h2>
-                        <button type="button" class="elements__like-button"></button>
-                    </div>
-                </div>
-                <div class= "elements__element">
-                    <img src="./images/mountain.jpg" alt="Домбай">
-                    <div class="elements__footer">
-                        <h2 class="elements__footer-title">Домбай</h2>
-                        <button type="button" class="elements__like-button"></button>
-                    </div>
-                </div>
-                <div class= "elements__element">
-                    <img src="./images/sunset.jpg" alt="Гора Эльбрус">
-                    <div class="elements__footer">
-                        <h2 class="elements__footer-title">Гора Эльбрус</h2>
-                        <button type="button" class="elements__like-button"></button>
-                    </div>
-                </div>
-                <div class= "elements__element">
-                    <img src="./images/mountain.jpg" alt="Домбай">
-                    <div class="elements__footer">
-                        <h2 class="elements__footer-title">Домбай</h2>
-                        <button type="button" class="elements__like-button"></button>
-                    </div>
-                </div>
-                <div class= "elements__element">
-                    <img src="./images/building.jpg" alt="Карачаево-Черкессия">
-                    <div class="elements__footer">
-                        <h2 class="elements__footer-title">Карачаево-Черкессия</h2>
-                        <button type="button" class="elements__like-button"></button>
-                    </div>
-                </div>
+                <ul></ul>
             </section>
+
+
         </main>
 
         <footer class="footer">
             <p class="footer__text">&copy; 2020 Mesto Russia</p>
         </footer>
 
-        <div class="popup">
+        <template id="card-template">
+            <li class="elements__element">
+                <button type="button" class="elements__delete link"></button>
+                <img class="elements__image" src="''" alt="" id="elements__image" />
+                <div class="elements__footer">
+                  <h2 class="elements__footer-title"></h2>
+                  <button type="button" class="elements__like-button"></button>
+                </div>
+            </li>
+        </template>
+
+        <div class="popup" id="popup-edit-profile">
             <form class="popup__container" method="post" name="container">
-                <button type="button" class="popup__close link"></button>
+                <button type="button" class="popup__close link" id="close-edit-popup"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <fieldset class="popup__cover">
                     <input class="popup__input" type="text" name="name" id="user-name">
@@ -83,6 +55,26 @@
                 </fieldset>
                 <button class="popup__submit" type="submit" name="submit">Сохранить</button>
                 </form>
+        </div>
+
+        <div class="popup" id="popup-add-new-card">
+            <form class="popup__container" method="post" name="add-card" id="add-card">
+                <button type="button" class="popup__close link" id="close-add-card-popup"></button>
+                <h2 class="popup__title">Новое место</h2>
+                <fieldset class="popup__cover" id="add-card-form">
+                    <input class="popup__input" type="text" name="name" id="image-title" placeholder="Название">
+                    <input class="popup__input" type="url" name="src" id="user-image" placeholder="Ссылка на картинку">
+                </fieldset>
+                <button class="popup__submit" type="submit" name="submit">Создать</button>
+                </form>
+        </div>  
+
+        <div class="popup image-popup">
+            <div class="image-popup__container">
+                <button type="button" class="popup__close link" name="image-popup__close" id="close-image-popup"></button>
+                <img class="image-popup__image" src="#" alt="#">
+                <h2 class="image-popup__title"></h2>
+            </div>
         </div>
 
         <script src="./scripts/script.js"></script>
