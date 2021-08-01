@@ -1,5 +1,5 @@
 //Main-page button
-const editUserButton = document.querySelector(".profile__edit-button");//Edit button
+const editUserButton = document.querySelector(".profile__edit-button"); //Edit button
 const addCardButton = document.querySelector(".profile__add-button"); //Profile button
 
 //Edit profile const
@@ -27,7 +27,6 @@ const popupImage = document.querySelector(".image-popup");
 const closePopupImage = document.getElementById("close-image-popup");
 const cardImage = document.querySelector(".image-popup__image");
 const cardTitle = document.querySelector(".image-popup__title");
-
 
 //Add Cards when open page
 const initialCards = [
@@ -57,6 +56,75 @@ const initialCards = [
     }
   ]; 
 
+//Open Popup
+function openPopup(popupType) {
+    popupType.classList.add("popup_opened");
+}
+
+//Close Popup
+function closePopup(popupType) {
+    popupType.classList.remove("popup_opened");
+}
+
+//Function Add cards
+function addCard(newCard) {
+    const cardElement = createCard(newCard);
+    cardList.prepend(cardElement);
+}
+
+//Function Add User card
+function addUserCard(evt) {
+    evt.preventDefault();
+    const userCard = {
+        name: userImageTitle.value,
+        link: userImage.value,
+    };
+    addCard(userCard);
+    newImageForm.reset();
+}
+
+//Open image popup
+function openPopupImage(link, name) {
+    cardImage.src = link;
+    cardImage.alt = name;
+    cardTitle.textContent = name;
+    openPopup(popupImage);
+}
+
+//Open Edit popup
+function openPopupFillForm() {
+    userFormName.value = userName.textContent;
+    userFormAbout.value = userAbout.textContent;
+    openPopup(popupEditProfile);
+}
+
+//Function Save on Edit Popup
+function popupEditInfo(evt) {
+    evt.preventDefault();
+    userName.textContent = userFormName.value;
+    userAbout.textContent = userFormAbout.value;
+    closePopup(popupEditProfile);
+}
+
+//Function Add User card
+function addUserCard(evt) {
+    evt.preventDefault();
+    const userCard = {
+        name: userImageTitle.value,
+        link: userImage.value,
+    };
+    addCard(userCard);
+    newImageForm.reset();
+}
+
+//Open image popup
+function openPopupImage(link, name) {
+    cardImage.src = link;
+    cardImage.alt = name;
+    cardTitle.textContent = name;
+    openPopup(popupImage);
+}
+
 //Add, delete, like card
 function createCard(card) {
     const newCard = cardTemplate.content.querySelector(".elements__element").cloneNode(true);
@@ -84,81 +152,25 @@ likeButton.addEventListener("click", function(evt) {
     return newCard;
 }
 
-//Function Add cards
-function addCard(newCard) {
-    const cardElement = createCard(newCard);
-    cardList.prepend(cardElement);
-}
-
-//Add cards from massive
-initialCards.forEach((card) => addCard(card));
-
-//Function Add User card
-function addUserCard(evt) {
-    evt.preventDefault();
-    const userCard = {
-        name: `${userImageTitle.value}`,
-        link: `${userImage.value}`,
-    };
-    addCard(userCard);
-    userImageTitle.value = '';
-    userImage.value = '';
-}
-
 newImageForm.addEventListener("submit", function(evt) {
     addUserCard(evt);
     closePopup(addCardPopup);
 });
-
-
-//Open image popup
-function openPopupImage(link, name) {
-    cardImage.src = link;
-    cardImage.alt = name;
-    cardTitle.textContent = name;
-    openPopup(popupImage);
-}
 
 //close image popup when Click Close image
 closePopupImage.addEventListener("click", function () {
     closePopup(popupImage);
 });
 
-
-//Open Popup
-function openPopup(popupType) {
-    popupType.classList.add("popup_opened");
-}
-
-//Close Popup
-function closePopup(popupType) {
-    popupType.classList.remove("popup_opened");
-}
-
 //Close Edit Popup when click on Close icon
 closePopupEdit.addEventListener("click", function () {
     closePopup(popupEditProfile);
 });
 
-//Open Edit popup
-function openPopupFillForm() {
-    userFormName.value = userName.textContent;
-    userFormAbout.value = userAbout.textContent;
-    openPopup(popupEditProfile);
-}
-
 editUserButton.addEventListener("click", function () {
     openPopupFillForm();
 });
 
-//Function Save on Edit Popup
-function popupEditInfo(evt) {
-    evt.preventDefault();
-    userName.textContent = userFormName.value;
-    userAbout.textContent = userFormAbout.value;
-    closePopup(popupEditProfile);
-}
-  
 //Click Save on Edit popup
 userEditForm.addEventListener("submit", popupEditInfo);
 
@@ -170,4 +182,7 @@ addCardButton.addEventListener("click", function () {
 //Close add card popup when click on Close icon
 closePopupAddCard.addEventListener("click", function () {
     closePopup(addCardPopup);
-});
+}); 
+
+//Add cards from massive
+initialCards.forEach((card) => addCard(card));
