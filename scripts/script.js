@@ -56,14 +56,33 @@ const initialCards = [
     }
   ]; 
 
+//Close popup when click ESC button
+function escClosePopup(evt) {
+    if (evt.keyCode === 27) {
+        const openedPopup = document.querySelector(".popup_opened");
+        closePopup(openedPopup);
+    }
+}
+
+// Function close popup when click on overlay
+function overlayClickClosePopup(popupType, evt) {
+    if (evt.target === evt.currentTarget) {
+      closePopup(popupType);
+    }
+}
+
 //Open Popup
 function openPopup(popupType) {
     popupType.classList.add("popup_opened");
+    document.addEventListener("keydown", escClosePopup);
+    //document.addEventListener("click", overlayClickClosePopup);
 }
 
 //Close Popup
 function closePopup(popupType) {
     popupType.classList.remove("popup_opened");
+    document.removeEventListener("keydown", escClosePopup);
+    //document.removeEventListener("click", overlayClickClosePopup);
 }
 
 //Function Add cards
@@ -91,11 +110,12 @@ function openPopupImage(link, name) {
     openPopup(popupImage);
 }
 
-//Open Edit popup
+//Function open Edit popup
 function openPopupFillForm() {
     userFormName.value = userName.textContent;
     userFormAbout.value = userAbout.textContent;
     openPopup(popupEditProfile);
+    const buttonSave = popupEditProfile.querySelector(".popup__submit");
 }
 
 //Function Save on Edit Popup
@@ -135,54 +155,45 @@ function createCard(card) {
     image.src = card.link;
     image.alt = card.name;
 
-image.addEventListener("click", function () {
-    openPopupImage(card.link, card.name);
-});
+//Open Image popup
+image.addEventListener("click", () => openPopupImage(card.link, card.name));
 
 //Click delete card
-deleteCardBurron.addEventListener("click", function(evt) {
-    evt.target.closest(".elements__element").remove(); 
-});
+deleteCardBurron.addEventListener("click", (evt)  => evt.target.closest(".elements__element").remove());
 
 //Click Like
-likeButton.addEventListener("click", function(evt) {
-    evt.target.classList.toggle("elements__like-button_active");
-});
-
+likeButton.addEventListener("click", (evt) => evt.target.classList.toggle("elements__like-button_active"));
     return newCard;
 }
 
-newImageForm.addEventListener("submit", function(evt) {
-    addUserCard(evt);
-    closePopup(addCardPopup);
-});
-
-//close image popup when Click Close image
-closePopupImage.addEventListener("click", function () {
-    closePopup(popupImage);
-});
-
-//Close Edit Popup when click on Close icon
-closePopupEdit.addEventListener("click", function () {
-    closePopup(popupEditProfile);
-});
-
-editUserButton.addEventListener("click", function () {
-    openPopupFillForm();
-});
-
-//Click Save on Edit popup
-userEditForm.addEventListener("submit", popupEditInfo);
-
 //Open add card popup
-addCardButton.addEventListener("click", function () {
-    openPopup(addCardPopup);
-});
+addCardButton.addEventListener("click", () => openPopup(addCardPopup));
+//Open Edit popup
+editUserButton.addEventListener("click", () => openPopupFillForm());
 
-//Close add card popup when click on Close icon
-closePopupAddCard.addEventListener("click", function () {
-    closePopup(addCardPopup);
-}); 
+//Click Save on popup
+userEditForm.addEventListener("submit", popupEditInfo);
+newImageForm.addEventListener("submit", (evt) => (addUserCard(evt), closePopup(addCardPopup)));
+
+//Close popup when click on Close icon
+closePopupEdit.addEventListener("click", () => closePopup(popupEditProfile));
+closePopupAddCard.addEventListener("click", () => closePopup(addCardPopup)); 
+closePopupImage.addEventListener("click", () => closePopup(popupImage));
+
+//Close popup when click on overlay
+popupEditProfile.addEventListener("click", (evt) => overlayClickClosePopup(popupEditProfile, evt));
+addCardPopup.addEventListener("click", (evt) => overlayClickClosePopup(addCardPopup, evt));
+popupImage.addEventListener("click", (evt) => overlayClickClosePopup(popupImage, evt));
 
 //Add cards from massive
 initialCards.forEach((card) => addCard(card));
+
+//Form validation
+enableValidation({
+    formSelector: '.popup__container',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit',
+    inactiveButtonClass: 'popup__submit_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+}); 
