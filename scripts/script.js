@@ -3,7 +3,7 @@ const editUserButton = document.querySelector(".profile__edit-button"); //Edit b
 const addCardButton = document.querySelector(".profile__add-button"); //Profile button
 
 //Edit profile const
-const closePopupEdit = document.querySelector(".popup__close");
+//const closePopupEdit = document.querySelector(".popup__close");
 const userName = document.querySelector(".profile__title");
 const userAbout = document.querySelector(".profile__subtitle");
 const userFormName = document.getElementById("user-name");
@@ -24,9 +24,11 @@ const newImageForm = document.getElementById("add-card");
 
 //Open image const
 const popupImage = document.querySelector(".image-popup");
-const closePopupImage = document.getElementById("close-image-popup");
+//const closePopupImage = document.getElementById("close-image-popup");
 const cardImage = document.querySelector(".image-popup__image");
 const cardTitle = document.querySelector(".image-popup__title");
+
+const popups = document.querySelectorAll('.popup')
 
 //Add Cards when open page
 const initialCards = [
@@ -64,26 +66,36 @@ function escClosePopup(evt) {
     }
 }
 
-// Function close popup when click on overlay
+/*// Function close popup when click on overlay
 function overlayClickClosePopup(popupType, evt) {
     if (evt.target === evt.currentTarget) {
       closePopup(popupType);
     }
-}
+}*/
 
 //Open Popup
 function openPopup(popupType) {
     popupType.classList.add("popup_opened");
     document.addEventListener("keydown", escClosePopup);
-    //document.addEventListener("click", overlayClickClosePopup);
 }
 
 //Close Popup
 function closePopup(popupType) {
     popupType.classList.remove("popup_opened");
     document.removeEventListener("keydown", escClosePopup);
-    //document.removeEventListener("click", overlayClickClosePopup);
 }
+
+//Close popup when click Close button or overlay
+popups.forEach((popup) => {
+    popup.addEventListener('click', (evt) => {
+        if (evt.target.classList.contains('popup_opened')) {
+            closePopup(popup)
+        }
+        if (evt.target.classList.contains('popup__close')) {
+          closePopup(popup)
+        }
+    })
+})
 
 //Function Add cards
 function addCard(newCard) {
@@ -100,12 +112,13 @@ function addUserCard(evt) {
     };
     addCard(userCard);
     newImageForm.reset();
+    const inputList = [userImageTitle, userImage];
+    const buttonSubmit = document.getElementById("submit-card");
+    toggleButtonState(buttonSubmit, inputList, configValidation);
 }
 
 //Open image popup
 function openPopupImage(link, name) {
-    cardImage.src = link;
-    cardImage.alt = name;
     cardTitle.textContent = name;
     openPopup(popupImage);
 }
@@ -115,7 +128,6 @@ function openPopupFillForm() {
     userFormName.value = userName.textContent;
     userFormAbout.value = userAbout.textContent;
     openPopup(popupEditProfile);
-    const buttonSave = popupEditProfile.querySelector(".popup__submit");
 }
 
 //Function Save on Edit Popup
@@ -124,17 +136,6 @@ function popupEditInfo(evt) {
     userName.textContent = userFormName.value;
     userAbout.textContent = userFormAbout.value;
     closePopup(popupEditProfile);
-}
-
-//Function Add User card
-function addUserCard(evt) {
-    evt.preventDefault();
-    const userCard = {
-        name: userImageTitle.value,
-        link: userImage.value,
-    };
-    addCard(userCard);
-    newImageForm.reset();
 }
 
 //Open image popup
@@ -175,7 +176,7 @@ editUserButton.addEventListener("click", () => openPopupFillForm());
 userEditForm.addEventListener("submit", popupEditInfo);
 newImageForm.addEventListener("submit", (evt) => (addUserCard(evt), closePopup(addCardPopup)));
 
-//Close popup when click on Close icon
+/*//Close popup when click on Close icon
 closePopupEdit.addEventListener("click", () => closePopup(popupEditProfile));
 closePopupAddCard.addEventListener("click", () => closePopup(addCardPopup)); 
 closePopupImage.addEventListener("click", () => closePopup(popupImage));
@@ -183,7 +184,7 @@ closePopupImage.addEventListener("click", () => closePopup(popupImage));
 //Close popup when click on overlay
 popupEditProfile.addEventListener("click", (evt) => overlayClickClosePopup(popupEditProfile, evt));
 addCardPopup.addEventListener("click", (evt) => overlayClickClosePopup(addCardPopup, evt));
-popupImage.addEventListener("click", (evt) => overlayClickClosePopup(popupImage, evt));
+popupImage.addEventListener("click", (evt) => overlayClickClosePopup(popupImage, evt));*/
 
 //Add cards from massive
 initialCards.forEach((card) => addCard(card));
