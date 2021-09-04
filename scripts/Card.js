@@ -1,8 +1,4 @@
 export default class Card {
-    _link;
-    _name;
-    _newCard;
-    _handleCardClick;
 
     constructor(link, name, cardTemplate, handleCardClick) {
         this._link = link;
@@ -24,7 +20,7 @@ export default class Card {
         const image = this._newCard.querySelector(".elements__image");
         const likeButton = this._newCard.querySelector(".elements__like-button");
         const deleteButton = this._newCard.querySelector(".elements__delete");
-
+        
         this._newCard.querySelector(".elements__footer-title").textContent = this._name;
 
         image.src = this._link;
