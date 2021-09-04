@@ -10,7 +10,7 @@ const userName = document.querySelector(".profile__title");
 const userAbout = document.querySelector(".profile__subtitle");
 const userFormName = document.querySelector(".popup__input_user_name");
 const userFormAbout = document.querySelector(".popup__input_user_about");
-const popupEditProfile = document.querySelector(".popup__edit-profile");
+const popupEditProfile = document.querySelector(".edit-profile");
 
 //Add cards const
 const addCardPopup = document.querySelector("#popup-add-new-card");
