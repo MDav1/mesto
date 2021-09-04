@@ -20,12 +20,10 @@
                     <button type="button" class="profile__edit-button link"></button>
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
-                <button type="button" class="profile__add-button link"></button>
+                <button type="button" class="profile__add-button link" id="profile__add-button"></button>
             </section>
 
-            <section class="elements">
-                <ul></ul>
-            </section>
+            <section class="elements"></section>
 
 
         </main>
@@ -64,24 +62,23 @@
                 <button type="button" class="popup__close link" id="close-add-card-popup"></button>
                 <h2 class="popup__title">Новое место</h2>
                 <fieldset class="popup__cover" id="add-card-form">
-                    <input class="popup__input" type="text" name="name" id="image-title" placeholder="Название" required minlength="2" maxlength="30">
+                    <input class="popup__input popup__input_img_title" type="text" name="name" id="image-title" placeholder="Название" required minlength="2" maxlength="30">
                     <span class="popup__error" id="image-title-error">#</span>
-                    <input class="popup__input" type="url" name="src" id="user-image" placeholder="Ссылка на картинку" required>
+                    <input class="popup__input popup__input_img" type="url" name="src" id="user-image" placeholder="Ссылка на картинку" required>
                     <span class="popup__error" id="user-image-error">#</span>
                 </fieldset>
                 <button class="popup__submit" type="submit" name="submit" id="submit-card">Создать</button>
                 </form>
         </div>  
 
-        <div class="popup image-popup">
+        <div class="popup image-popup" id="image-popup">
             <div class="image-popup__container">
                 <button type="button" class="popup__close link" name="image-popup__close" id="close-image-popup"></button>
                 <img class="image-popup__image" src="#" alt="#">
                 <h2 class="image-popup__title"></h2>
             </div>
         </div>
-
-        <script src="./scripts/validate.js"></script>
-        <script src="./scripts/script.js"></script>
+        
+        <script type="module" src="./scripts/script.js"></script>
     </body>
 </html>
