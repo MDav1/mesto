@@ -10,7 +10,7 @@ const userName = document.querySelector(".profile__title");
 const userAbout = document.querySelector(".profile__subtitle");
 const userFormName = document.querySelector(".popup__input_user_name");
 const userFormAbout = document.querySelector(".popup__input_user_about");
-const popupEditProfile = document.querySelector(".popup__edit_profile");
+const popupEditProfile = document.querySelector(".popup__edit-profile");
 
 //Add cards const
 const addCardPopup = document.querySelector("#popup-add-new-card");
@@ -18,7 +18,7 @@ const addCardPopup = document.querySelector("#popup-add-new-card");
 //Create card const
 const cardList = document.querySelector(".elements");
 const cardTemplate = document.querySelector("#card-template");
-const addCardForm = document.querySelector('.popup__new_card');
+const addCardForm = document.querySelector('.popup__new-card');
 const userImageTitle = document.querySelector(".popup__input_img_title");
 const userImage = document.querySelector(".popup__input_img"); 
 
