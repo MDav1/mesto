@@ -1,0 +1,25 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "## Краткое описание Адаптивное веб приложение которое позволяет пользователю создавать свою галерею изображений с возможностью добавлять, удалять, лайкать изображения. На данный момент из функционала реализована только возможность редактирования информации о пользователе.",
+  "main": "index.js",
+  "scripts": {
+    "build": "rd /s /q dist && webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MDav1/mesto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MDav1/mesto/issues"
+  },
+  "homepage": "https://github.com/MDav1/mesto#readme",
+  "devDependencies": {
+    "webpack": "^5.53.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.2.1"
+  }
+}
