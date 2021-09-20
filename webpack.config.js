@@ -17,6 +17,7 @@ module.exports = {
     contentBase: path.resolve(__dirname, './dist'),
     open: true,
     compress: true,
+    host: 'localhost',
     port: 8080
   },
   module: {
@@ -28,14 +29,6 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf)$/,
         type: 'asset/resource',
-      },
-      {
-      test: /\.html$/,
-      loader: 'html-loader',
-      options: {
-        sources: true,
-      },
-      exclude: '/node_modules/'
       },
       {
         test: /\.css$/,
