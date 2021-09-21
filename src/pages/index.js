@@ -29,8 +29,6 @@ const {cardTemplate, cardList} = cardConfig;
 const list = new Section ({
     items: initialCards,
     renderer: (item) => {
-        //const card = new Card(item, cardTemplate, item => imagePopup.open(item));
-        //const cardElement = card.constructCard();
         list.addItem(createCard(item));
     }
 }, cardList);
@@ -43,7 +41,6 @@ const newCardPopup = new PopupWithForm(addCardPopup, (inputValues) => {
         name: inputValues['card-name'],
         link: inputValues['card-url']
     };
-
     list.addItem(createCard(data));
     newCardPopup.close();
 });
