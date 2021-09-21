@@ -11,9 +11,9 @@ export default class Popup {
     }
 
     _closePopupEscClick(e) {
-    const escButton = 27;
-    if (e.keyCode === escButton) {
-        this.close();
+        const escButton = 27;
+        if (e.keyCode === escButton) {
+            this.close();
         }
     }
 
@@ -37,6 +37,4 @@ export default class Popup {
         this._closeButton.addEventListener('click', () => this.close());
         this._popup.addEventListener('mousedown', (e) => this._handleOverlayClose(e));
     }
-
-    
 }

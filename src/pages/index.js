@@ -1,10 +1,10 @@
-import './pages/index.css';
-import Card from './components/Card.js';
-import FormValidator from './components/FormValidator.js';
-import Section from './components/Section.js'
-import PopupWithImage from './components/PopupWithImage.js';
-import PopupWithForm from "./components/PopupWithForm.js";
-import UserInfo from "./components/UserInfo.js";
+import './index.css';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import Section from '../components/Section.js'
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
 import {
     initialCards,
     popupWithImageConfig,
@@ -12,23 +12,26 @@ import {
     newCardPopupConfig,
     formConfig,
     profilePopupConfig,
-    profileConfig,
-    editUserButton,
-    addCardButton
-} from './utils/constants.js';
+    profileConfig
+} from '../utils/constants.js';
 
 const formValidators = {};
 const {popupImageSelector} = popupWithImageConfig;
 const imagePopup = new PopupWithImage(popupImageSelector);
+
+const createCard = (data) => {
+    const card = new Card (data, cardTemplate, item => imagePopup.open(item));
+    return card.constructCard();
+}
 
 //Add cards from massive
 const {cardTemplate, cardList} = cardConfig;
 const list = new Section ({
     items: initialCards,
     renderer: (item) => {
-        const card = new Card(item, cardTemplate, item => imagePopup.open(item));
-        const cardElement = card.constructCard();
-        list.addItem(cardElement);
+        //const card = new Card(item, cardTemplate, item => imagePopup.open(item));
+        //const cardElement = card.constructCard();
+        list.addItem(createCard(item));
     }
 }, cardList);
 list.render();
@@ -40,9 +43,8 @@ const newCardPopup = new PopupWithForm(addCardPopup, (inputValues) => {
         name: inputValues['card-name'],
         link: inputValues['card-url']
     };
-    const card = new Card(data, cardTemplate, item => imagePopup.open(item));
 
-    list.addItem(card.constructCard());
+    list.addItem(createCard(data));
     newCardPopup.close();
 });
 
@@ -68,6 +70,7 @@ formSelector.forEach(item => {
 });
 
 //Open Edit User form
+const editUserButton = document.querySelector('.profile__edit-button');
 editUserButton.addEventListener('click', () => {
     const {name, about} = userInfo.getUserInfo();
     const {userNameInput, userAboutInput} = profilePopupConfig;
@@ -80,6 +83,7 @@ editUserButton.addEventListener('click', () => {
 });
 
 //Open Add Card
+const addCardButton = document.querySelector('.profile__add-button');
 addCardButton.addEventListener('click', () => {
     formValidators['add-card'].resetValidation();
     newCardPopup.open();
